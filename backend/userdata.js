@@ -18,10 +18,10 @@ router.post('/create' , async(req , res) => {
         profile:'',
     })
     .then((doc) => {
-        res.sendStatus(200);
+        res.send(200);
     })
     .catch((error) => {
-        res.status(500).send({error:error});
+        res.send(500);
     })
 });
 
@@ -38,21 +38,18 @@ router.get('/get', async (req, res) => {
                 )
             )
             .get();
-
         if (snapshot.docs.length === 0) {
-            res.send({ error: 'Not Found' });
+            res.send({});
             return;
         }
-
         let data = {};
         snapshot.forEach((doc) => {
             data = doc.data();
         });
-
         res.send(data);
     } catch (error) {
         console.error(error);
-        res.status(500).send({ error: 'Internal Server Error' });
+        res.status(500);
     }
 });
 module.exports = router;

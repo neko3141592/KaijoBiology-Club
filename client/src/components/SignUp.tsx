@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import  Axios  from 'axios';
 import { base } from '../BaseURL';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth } from '../firebase';
 
 type FormValues = {
     username: string,
@@ -16,7 +18,8 @@ const SignUp:React.FC = () => {
     const initFormValues: FormValues = { username:'' , email:'', password:'' , password2:'' };
     const [formValues, setFormValues] = useState<FormValues>(initFormValues);
     const [warnings, setWarnings] = useState<FormValues>(initFormValues);
-    const navigate = useNavigate();
+    const [serverError , setServerError] = useState<string|null>(null);
+    const Navigate = useNavigate();
 
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -24,20 +27,44 @@ const SignUp:React.FC = () => {
         setFormValues({ ...formValues, [name]: value });
     };
 
-    const handleSubmit = () => {
-        if(Object.keys(validate()).length !== 0) {
-            setWarnings(validate);
+    const handleSubmit = async () => {
+        const errors = await validate();
+        if(Object.keys(errors).length !== 0) {
+            setWarnings(errors);
+            return;
         }
-        Axios.get(`${base}/api/user/create?username&email=${formValues.username}`)
-        .then((res) => {
-
-        })
-        .catch((error) => {
-            
-        })
+        try {
+            await createUserWithEmailAndPassword(auth, formValues.email, formValues.password);
+            console.log("createUserWithEmailAndPassword succeeded");
+        
+            await Axios.post(`${base}/api/user/create?username=${formValues.username}&email=${formValues.email}`);
+            console.log("Axios.post succeeded");
+        
+            Navigate('/');
+            console.log("Navigate('/') succeeded");
+        
+            window.location.reload();
+            console.log("window.location.reload succeeded");
+        } catch (error:any) {
+            console.error("Error in try-catch:", error);
+        
+            // エラーがどのようなものかを確認する
+            if (error.response) {
+                console.error("Response data:", error.response.data);
+                console.error("Response status:", error.response.status);
+                console.error("Response headers:", error.response.headers);
+            } else if (error.request) {
+                console.error("Request info:", error.request);
+            } else {
+                console.error("Other error details:", error.message);
+            }
+        
+            setServerError('不明なエラーが発生しました');
+        }
+        
     }
 
-    const validate = () => {
+    const validate = async () => {
         const errors:any = {};
         const username_regex = new RegExp(/^[ -~]+$/);
         const email_regex = new RegExp(/^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/);
@@ -46,11 +73,29 @@ const SignUp:React.FC = () => {
             errors.username = '入力してください';
         } else if (!username_regex.test(formValues.username)) {
             errors.username = '半角英数との記号み使用可能です';
+        } else {
+            try {
+                const res = await Axios.get(`${base}/api/user/get?username=${formValues.username}&email=`);
+                if(Object.keys(res.data).length !== 0) {
+                    errors.username = 'そのユーザー名は既に使用されています';
+                }
+            } catch {
+                console.error('error');
+            }
         }
         if (!formValues.email) {
             errors.email = '入力してください';
         } else if (!email_regex.test(formValues.email)) {
             errors.email = '有効なメールアドレスを入力してください';
+        } else {
+            try {
+                const res = await Axios.get(`${base}/api/user/get?username=&email=${formValues.email}`);
+                if(Object.keys(res.data).length !== 0) {
+                    errors.email = 'そのメールアドレスは既に使用されています';
+                }
+            } catch {
+                console.error('error');
+            }
         }
         if (!formValues.password) {
             errors.password = '入力してください';
@@ -81,6 +126,7 @@ const SignUp:React.FC = () => {
                 <p>Confirm password</p>
                 <input type='password' name='password2' placeholder='' onChange={handleChange} />
                 <p className='warning'>{warnings.password2}</p>
+                <p className="warning">{serverError}</p>
                 <br />
                 <button className='login-button' onClick={handleSubmit}>
                 Sign up
