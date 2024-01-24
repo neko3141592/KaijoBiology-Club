@@ -1,0 +1,56 @@
+@use './color';
+
+.list {
+    a {
+        padding: 5px 20px;
+        border-radius: 20px;
+        text-decoration: none;
+        color: black;
+        transition: 300ms;
+    }
+    z-index: 99;
+    width: 95%;
+    margin: 10px auto;
+    padding: 0 20px;
+    inset: 0;
+    position: fixed;
+    display: flex;
+    height: 60px;
+    border-radius: 50px;
+    font-weight:600;
+    transition: 300ms;
+
+    &.display {
+        background-color: rgba(255,255,255,.95);
+    }
+    .list-left {
+        margin: auto 0;
+        display: flex;
+        a {
+            font-size: 18px;
+            padding: 0 30px 0 0;
+            font-weight:900;
+            span {
+                color: color.$mainGray;
+            }
+        }
+    }
+    .list-right {
+        margin: auto 0;
+        margin-left: auto;
+        display: flex;
+        padding-right: 18px;
+        a{
+            margin: 0 2px;
+            font-family: "M PLUS Rounded 1c" , sans-serif;
+            &.user {
+                background-color: black;
+                color: white;
+            }
+            &:hover{
+                background-color: black;
+                color: white;
+            }
+        }
+    }
+}
