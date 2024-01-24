@@ -1,2 +1,4 @@
 /client/node_modules
+/client/src/firebase.ts
+
 /backend/node_modules
