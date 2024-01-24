@@ -1,10 +1,10 @@
 import {NavLink} from 'react-router-dom';
 import { useState , useEffect, useContext } from 'react';
 import './stylesheets/Header.scss';
-import { UserData, logout, userDataType } from '../providers/UserProvider';
+import { UserData, Logout, UserDataType } from '../providers/UserProvider';
 
 const Header:React.FC = () => {
-    const userData = useContext<userDataType|null>(UserData);
+    const userData = useContext<UserDataType|null>(UserData);
     const [isVisible, setIsVisible] = useState<boolean>(false);
     const toggleVisibility = () => {
         window.scrollY > 10
@@ -34,7 +34,7 @@ const Header:React.FC = () => {
                     ):(
                         <>
                             <a className='user'>{userData.username}</a>
-                            <NavLink to={'/'} onClick={logout}>Logout</NavLink>
+                            <NavLink to={'/'} onClick={Logout}>Logout</NavLink>
                         </>
                     )
                 }

@@ -10,7 +10,11 @@ router.post('/create' , async(req , res) => {
     .add({
         email:email,
         username:username,
-        admin:false,
+        auth:{
+            admin:false,
+            edit:false,
+            request:false,
+        },
         profile:'',
     })
     .then((doc) => {
@@ -21,25 +25,34 @@ router.post('/create' , async(req , res) => {
     })
 });
 
-router.get('/get' , async (req , res) => {
+router.get('/get', async (req, res) => {
     const username = req.query.username;
     const email = req.query.email;
-    const snapshot = await db.collection('users')
-    .where(
-        Filter.or(
-            Filter.where('email' , '==' , email),
-            Filter.where('username' ,'==' , username)
-        )
-    )
-    .get()
-    .catch((error) => {
-        res.status(500).send({error:'Internal Server Error'});
-    });
-    if(snapshot.docs.length === 0) res.send({});
-    snapshot.forEach((doc) => {
-        res.send(doc.data());
-        return;
-    })
-});
 
+    try {
+        const snapshot = await db.collection('users')
+            .where(
+                Filter.or(
+                    Filter.where('email', '==', email),
+                    Filter.where('username', '==', username)
+                )
+            )
+            .get();
+
+        if (snapshot.docs.length === 0) {
+            res.send({ error: 'Not Found' });
+            return;
+        }
+
+        let data = {};
+        snapshot.forEach((doc) => {
+            data = doc.data();
+        });
+
+        res.send(data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send({ error: 'Internal Server Error' });
+    }
+});
 module.exports = router;
