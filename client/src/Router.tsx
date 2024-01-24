@@ -9,6 +9,7 @@ import Notfound from './components/Notfound';
 import About from './components/About';
 import React from 'react';
 import Achievement from './components/Achievement';
+import Group from './components/Group'
 
 const Router:React.FC = () => {
     return (
@@ -22,6 +23,7 @@ const Router:React.FC = () => {
                     <Route path={'/signup'} element={<SignUp/>}/>
                     <Route path={'/about'} element={<About/>}/>
                     <Route path={'/achievement'} element={<Achievement/>}/>
+                    <Route path={'/group'} element={<Group/>}/>
                     <Route path={'/*'} element={<Notfound/>}/>
                 </Routes>
             </div>
