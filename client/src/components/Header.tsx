@@ -33,7 +33,7 @@ const Header:React.FC = () => {
                         </>
                     ):(
                         <>
-                            <a className='user'>{userData.username}</a>
+                            <NavLink to={`/user/${userData.username}`} className='user'>{userData.username}</NavLink>
                             <NavLink to={'/'} onClick={Logout}>Logout</NavLink>
                         </>
                     )

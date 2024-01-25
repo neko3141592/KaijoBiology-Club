@@ -24,6 +24,7 @@ const firestoreInitialized = new Promise((resolve, reject) => {
 
 firestoreInitialized.then(() => {
     app.use('/api/user' , require('./userdata.js'));
+    app.use('/api/blogs' , require('./blogs.js'));
     app.listen(4545);
 });
 

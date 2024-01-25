@@ -12,8 +12,11 @@ router.post('/create' , async(req , res) => {
         username:username,
         auth:{
             admin:false,
-            edit:false,
-            request:false,
+            blog_edit:false,
+            edit_any:false,
+            blog_request:false,
+            request:true,
+            request_agree:false,
         },
         profile:'',
     })

@@ -35,30 +35,11 @@ const SignUp:React.FC = () => {
         }
         try {
             await createUserWithEmailAndPassword(auth, formValues.email, formValues.password);
-            console.log("createUserWithEmailAndPassword succeeded");
-        
             await Axios.post(`${base}/api/user/create?username=${formValues.username}&email=${formValues.email}`);
-            console.log("Axios.post succeeded");
-        
             Navigate('/');
-            console.log("Navigate('/') succeeded");
-        
             window.location.reload();
-            console.log("window.location.reload succeeded");
         } catch (error:any) {
-            console.error("Error in try-catch:", error);
-        
-            // エラーがどのようなものかを確認する
-            if (error.response) {
-                console.error("Response data:", error.response.data);
-                console.error("Response status:", error.response.status);
-                console.error("Response headers:", error.response.headers);
-            } else if (error.request) {
-                console.error("Request info:", error.request);
-            } else {
-                console.error("Other error details:", error.message);
-            }
-        
+            console.error(error);
             setServerError('不明なエラーが発生しました');
         }
         

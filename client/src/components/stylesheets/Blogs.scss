@@ -14,6 +14,7 @@
         h1{
             border-left: solid 10px color.$mainGray;
             padding-left: 5px;
+            margin: 20px 0;
         }
         input {
             height: 40px;
@@ -25,6 +26,42 @@
             border-radius: 20px;
             padding: 0 10px;
             font-family: "M PLUS Rounded 1c" , sans-serif;
+        }
+        .blogData {
+            margin: 20px 0;
+            display: flex;
+            border-radius: 10px;
+            background-color: white;
+            height: 160px;
+            transition: 400ms;
+            h1 {
+                font-size: 25px;
+                border: none;
+                margin: 0;
+                padding: 0;
+            }
+            p {
+                margin: 0 5px 0 0;
+                font-size: 18px;
+                color: color.$rightBlue;
+            }
+            .image{
+                background-color: color.$mainGray;
+                height: 140px;
+                width: 140px;
+                margin: auto 10px;
+                border-radius: 10px;
+            }
+            .data {
+                margin: auto 20px;
+            }
+            .tags {
+                display: flex;
+            }
+            &:hover{
+                box-shadow: color.$mainShadow;
+                background-color: color.$rightGray;
+            }
         }
     }
 }
