@@ -3,7 +3,6 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, Auth } from 'firebase/auth';
 import { auth } from '../firebase';
 import './stylesheets/Login.scss';
-// import { UserData } from '../providers/UserProvider';
 
 type FormValues = {
     email: string;
@@ -16,7 +15,7 @@ const Login: React.FC = () => {
     const [warning, setWarning] = useState<string>('');
     const navigate = useNavigate();
 
-    const signIn = () => {
+    const signIn = ():void => {
         console.log(formValues);
         signInWithEmailAndPassword(auth as Auth, formValues.email, formValues.password)
         .then((res) => {
@@ -29,7 +28,7 @@ const Login: React.FC = () => {
         });
     };
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>):void => {
         const { name, value } = e.target;
         setFormValues({ ...formValues, [name]: value });
     };

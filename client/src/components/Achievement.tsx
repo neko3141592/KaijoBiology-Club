@@ -1,6 +1,6 @@
 import './stylesheets/Achievement.scss'
 
-const Achievement = () => {
+const Achievement:React.FC = () => {
     return (
         <div className="achievement">
             <div className="inner">

@@ -10,6 +10,7 @@ import About from './components/About';
 import React from 'react';
 import Achievement from './components/Achievement';
 import Group from './components/Group'
+import BlogPage from './components/BlogPage';
 
 const Router:React.FC = () => {
     return (
@@ -20,6 +21,7 @@ const Router:React.FC = () => {
                     <Route path={'/'} element={<Home/>}/>
                     <Route path={'/login'} element={<Login/>}/>
                     <Route path={'/blogs'} element={<Blogs/>}/>
+                    <Route path={'/blogs/:blogID'} element={<BlogPage/>}/>
                     <Route path={'/signup'} element={<SignUp/>}/>
                     <Route path={'/about'} element={<About/>}/>
                     <Route path={'/achievement'} element={<Achievement/>}/>

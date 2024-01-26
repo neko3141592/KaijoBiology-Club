@@ -27,7 +27,7 @@ const SignUp:React.FC = () => {
         setFormValues({ ...formValues, [name]: value });
     };
 
-    const handleSubmit = async () => {
+    const handleSubmit = async ():Promise<void> =>  {
         const errors = await validate();
         if(Object.keys(errors).length !== 0) {
             setWarnings(errors);
@@ -45,7 +45,7 @@ const SignUp:React.FC = () => {
         
     }
 
-    const validate = async () => {
+    const validate = async ():Promise<any> => {
         const errors:any = {};
         const username_regex = new RegExp(/^[ -~]+$/);
         const email_regex = new RegExp(/^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*\.)+[a-zA-Z]{2,}$/);

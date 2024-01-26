@@ -5,18 +5,26 @@ const { Filter } = require('firebase-admin/firestore');
 
 router.get('/get' , async (req , res) => {
     const target =  req.query.target;
-    let query;
-    if(target === '*') {
-        query = db.collection('blogs');
-    } else {
-        query = db.collection('blogs')
-        .where('title' , '==' , target);
-    }
+    const option = req.query.option;
+    const query = db.collection('blogs');
     try {
         const snapshot = await query.get();
         let data = [];
         snapshot.docs.forEach((docs) => {
-            data.push(docs.data());
+            if(target === '*') {
+                data.push(docs.data());
+            } else {
+                const tmp = docs.data();
+                if(option === 'all') {
+                    if(tmp.title === target) {
+                        data.push(tmp);
+                    }
+                } else {
+                    if(~tmp.title.indexOf(target)) {
+                        data.push(tmp);
+                    }
+                }
+            }
         });
         res.send(data);
     } catch (error) {

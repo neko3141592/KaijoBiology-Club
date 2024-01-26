@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 import './stylesheets/Blogs.scss';
 import  Axios, { AxiosResponse }  from 'axios';
 import { base } from '../BaseURL';
 
-type blogDataType = {
+export type blogDataType = {
     id:string,
     title:string,
     tags:string[],
@@ -12,7 +12,9 @@ type blogDataType = {
 
 const Blogs:React.FC = () => {
     const [blogsData , setBlogsData] = useState<blogDataType[]|null>(null);
-    const getBlogData = async (target:string) => {
+    const [searchFormValue , setSearchFormValue] = useState<string>('');
+    const getBlogData = async (target:string):Promise<void> => {
+        if(target.length === 0) target = '*';
         try {
             const res:AxiosResponse<blogDataType[]> = await Axios.get(`${base}/api/blogs/get?target=${target}`);
             setBlogsData(res.data);
@@ -23,11 +25,17 @@ const Blogs:React.FC = () => {
     useEffect(() => {
         getBlogData('*');
     } , []);
+    const handleChange = (e:ChangeEvent<HTMLInputElement>):void => {
+        setSearchFormValue(e.target.value);
+    }
     return (
         <div className='blogs'>
             <div className='inner'>
                 <h1>部誌一覧</h1>
-                <input type='text' placeholder='Search'/>
+                <div className='search'>
+                    <input type='text' placeholder='Search' onChange={handleChange}/>
+                    <button onClick={() => {getBlogData(searchFormValue);}}>Go</button>
+                </div>
                 <br/>
             {
                 (!blogsData || !blogsData.length)?
