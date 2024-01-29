@@ -1,5 +1,4 @@
 import { useParams } from "react-router-dom";
-import './stylesheets/Blogs.scss';
 import { blogDataType} from "./Blogs";
 import { useEffect, useState } from "react";
 import  Axios, { AxiosResponse }  from 'axios';

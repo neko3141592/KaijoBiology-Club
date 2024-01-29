@@ -1,5 +1,4 @@
 import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
-import './stylesheets/Blogs.scss';
 import  Axios, { AxiosResponse }  from 'axios';
 import { base } from '../BaseURL';
 

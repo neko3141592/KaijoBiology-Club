@@ -2,7 +2,6 @@ import { useState, ChangeEvent} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { signInWithEmailAndPassword, Auth } from 'firebase/auth';
 import { auth } from '../firebase';
-import './stylesheets/Login.scss';
 
 type FormValues = {
     email: string;

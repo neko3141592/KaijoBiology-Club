@@ -1,0 +1,75 @@
+@use './config/colors';
+@use './config/designs';
+
+.blogs,.blog-page{
+    @extend %page_main;
+    .inner {
+        width: 95%;
+        margin: 120px auto;
+        h1{
+            border-left: solid 10px colors.$mainGray;
+            padding-left: 5px;
+            margin: 20px 0;
+        }
+        .search{
+            display: flex;
+            input {
+                height: 40px;
+                width: 30%;
+                font-size: 18px;
+                background-color: white;
+                outline: none;
+                border: solid 3px colors.$rightGray;
+                border-radius: 20px 0 0 20px;
+                border-right: none;
+                padding: 0 0 0 10px;
+                font-family: "M PLUS Rounded 1c" , sans-serif;
+            }
+            button {
+                margin: auto 0;
+                height: 46px;
+                width: 60px;
+                border-radius: 0 20px 20px 0;
+                border: solid 3px colors.$rightGray;
+                border-left: none;
+                background-color: colors.$rightGray;
+                font-family: "M PLUS Rounded 1c" , sans-serif;
+            }
+        }
+        .blogData {
+            margin: 20px 0;
+            display: flex;
+            border-radius: 10px;
+            background-color: white;
+            height: 200px;
+            transition: 400ms;
+            h1 {
+                font-size: 25px;
+                border: none;
+                margin: 0;
+                padding: 0;
+            }
+            p {
+                margin: 0 5px 0 0;
+                font-size: 18px;
+                color: colors.$rightBlue;
+            }
+            .image{
+                background-color: colors.$mainGray;
+                height: 175px;
+                width: 175px;
+                margin: auto 10px;
+                border-radius: 10px;
+            }
+            .data {
+                margin: auto 20px;
+            }
+            .tags {
+                display: flex;
+            }
+            &:hover{
+                box-shadow: designs.$mainShadow;
+            }
+        }
+    }
+}

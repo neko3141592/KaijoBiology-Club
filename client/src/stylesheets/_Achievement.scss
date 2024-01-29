@@ -1,6 +1,7 @@
-@use './color';
+@use './config/colors';
+@use './config/designs';
 
-.about{
+.achievement{
     overflow: scroll;
     position: relative;
     height: 100vh;

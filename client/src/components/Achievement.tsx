@@ -1,5 +1,3 @@
-import './stylesheets/Achievement.scss'
-
 const Achievement:React.FC = () => {
     return (
         <div className="achievement">

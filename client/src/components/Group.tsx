@@ -1,5 +1,3 @@
-import './stylesheets/Group.scss'
-
 const Group:React.FC = () =>{
     return(
         <div className='group'>

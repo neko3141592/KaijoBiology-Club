@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import './stylesheets/Notfound.scss';
 import { NavLink } from 'react-router-dom';
 
 const Notfound:React.FC = () => {

@@ -1,6 +1,5 @@
 import {NavLink} from 'react-router-dom';
 import { useState , useEffect, useContext } from 'react';
-import './stylesheets/Header.scss';
 import { UserData, Logout, UserDataType } from '../providers/UserProvider';
 
 const Header:React.FC = () => {

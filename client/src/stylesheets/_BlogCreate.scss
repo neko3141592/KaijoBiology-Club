@@ -1,0 +1,10 @@
+@use './config/colors';
+
+
+.blog-create {
+    .editor {
+        margin: 0 auto;
+        border: solid 5px colors.$rightGray;
+        border-radius: 10px;
+    }
+}

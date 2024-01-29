@@ -1,5 +1,5 @@
 import {BrowserRouter , Routes , Route} from 'react-router-dom';
-import './App.css';
+import './App.scss';
 import Home from './components/Home';
 import Header from './components/Header';
 import Login from './components/Login';
@@ -11,6 +11,7 @@ import React from 'react';
 import Achievement from './components/Achievement';
 import Group from './components/Group'
 import BlogPage from './components/BlogPage';
+import BlogCreate from './components/BlogCreate';
 
 const Router:React.FC = () => {
     return (
@@ -20,8 +21,11 @@ const Router:React.FC = () => {
                 <Routes>
                     <Route path={'/'} element={<Home/>}/>
                     <Route path={'/login'} element={<Login/>}/>
+
                     <Route path={'/blogs'} element={<Blogs/>}/>
                     <Route path={'/blogs/:blogID'} element={<BlogPage/>}/>
+                    <Route path={'/blogs/create'} element={<BlogCreate/>}/>
+
                     <Route path={'/signup'} element={<SignUp/>}/>
                     <Route path={'/about'} element={<About/>}/>
                     <Route path={'/achievement'} element={<Achievement/>}/>

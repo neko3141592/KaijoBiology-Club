@@ -1,6 +1,5 @@
 import { NavLink } from 'react-router-dom';
 import { Timeline } from 'react-twitter-widgets';
-import './stylesheets/Home.scss';
 import HomeNews from './HomeNews';
 
 

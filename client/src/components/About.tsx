@@ -1,5 +1,3 @@
-import './stylesheets/About.scss';
-
 const About:React.FC = () => {
     return (
         <div className='about'>

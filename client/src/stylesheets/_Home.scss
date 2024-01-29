@@ -1,4 +1,5 @@
-@use './color';
+@use './config/colors';
+@use './config/designs';
 
 @keyframes fuwafuwa {
     0%, 100% {
@@ -37,7 +38,7 @@
         display: flex;
         font-family: "M PLUS Rounded 1c" , sans-serif;
         h1{
-            border-left: solid 10px color.$mainGreen;
+            border-left: solid 10px colors.$mainGreen;
             padding-left: 5px;
         }
         .guide {
@@ -51,7 +52,7 @@
                     margin: 20px 0;
                     border-radius: 10px;
                     font-size: 20px;
-                    background-color: color.$rightGray;
+                    background-color: colors.$rightGray;
                     padding: 10px 0 5px 10px;
                     a {
                         padding: 0;
@@ -62,7 +63,7 @@
                         font-size: 18px;
                         &::before {
                             content: '▶';
-                            color: color.$mainGreen;
+                            color: colors.$mainGreen;
                         }
                     }
                 }

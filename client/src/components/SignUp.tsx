@@ -1,5 +1,4 @@
 import { ChangeEvent, useState } from 'react';
-import './stylesheets/SignUp.scss';
 import { useNavigate } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 import  Axios  from 'axios';

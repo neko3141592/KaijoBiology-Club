@@ -1,0 +1,13 @@
+@use './config/colors';
+@use './config/designs';
+
+.notfound{
+    @extend %page_main;
+    .inner {
+        width: 95%;
+        margin: 120px auto;
+        h1{
+            padding-left: 5px;
+        }
+    }
+}
