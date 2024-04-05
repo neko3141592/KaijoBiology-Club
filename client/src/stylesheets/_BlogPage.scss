@@ -1,0 +1,21 @@
+@use './config/colors';
+
+%blog_page {
+    font-family: 'Yusei Magic', sans-serif;
+    padding: 10px;
+    h1,h2,h3,p {
+        border: none;
+        margin: 10px;
+        padding: 0;
+    }
+    h1 {
+        font-size: 40px;
+        width: -moz-fit-content;
+        width: fit-content;
+        background: linear-gradient(transparent 80%, colors.$mainGreen 80%);
+    }
+    h2 {
+        color: colors.$mainGray;
+        font-size: 30px;
+    }
+}

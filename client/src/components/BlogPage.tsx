@@ -6,7 +6,6 @@ import { base } from '../BaseURL';
 import { marked } from 'marked';
 
 const BlogPage:React.FC = () => {
-    
     const { blogID } = useParams();
     const [blogData , setBlogData] = useState<blogDataType[]|null>(null);
     const getBlogData = async (target:string):Promise<void> => {

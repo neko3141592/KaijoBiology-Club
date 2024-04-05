@@ -3,6 +3,7 @@ const router = express.Router();
 const db = require('./app.js');
 const { Filter } = require('firebase-admin/firestore');
 
+
 router.post('/create' , async(req , res) => {
     const username = req.query.username;
     const email = req.query.email;
@@ -55,4 +56,5 @@ router.get('/get', async (req, res) => {
         res.status(500);
     }
 });
+
 module.exports = router;
