@@ -1,0 +1,34 @@
+@use './config/colors';
+@use './config/designs';
+
+.mypage {
+    .inner {
+        width: 95%;
+        margin: 120px auto;
+        h1{
+            padding-left: 5px;
+            margin: 20px 0;
+        }
+        input {
+            #file-upload-button {
+                background-color: colors.$mainGray;
+            }
+            
+        }
+        .editor {
+            margin: 10px auto;
+            border-radius: 10px;
+            border: solid 5px colors.$rightGray;
+        }
+        .preview {
+            margin: 0 auto;
+            border-radius: 10px;
+            border: solid 5px colors.$rightGray;
+            height: 50vh;
+            width: 100%;
+            background-color: white;
+            overflow: scroll;
+            @extend %blog_page !optional;
+        }
+    }
+}

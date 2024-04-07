@@ -4,19 +4,7 @@ import { useEffect, useState , createContext} from "react";
 import Axios, { AxiosError, AxiosResponse } from 'axios';
 import Router from "../Router";
 import { base } from "../BaseURL";
-
-export type UserAuthType = {
-    admin:boolean,
-    edit:boolean,
-    request:boolean,
-}
-
-export type UserDataType = {
-    username:string,
-    email:string,
-    auth: UserAuthType,
-    profile: string,
-};
+import { UserDataType } from "@/types/types";
 
 export const UserData = createContext<UserDataType|null>(null);
 

@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
-import { blogDataType} from "./Blogs";
 import { useEffect, useState } from "react";
 import  Axios, { AxiosResponse }  from 'axios';
 import { base } from '../BaseURL';
 import { marked } from 'marked';
+import { blogDataType } from "@/types/types";
 
 const BlogPage:React.FC = () => {
     const { blogID } = useParams();

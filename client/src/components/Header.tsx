@@ -1,6 +1,7 @@
 import {NavLink} from 'react-router-dom';
 import { useState , useEffect, useContext } from 'react';
-import { UserData, Logout, UserDataType } from '../providers/UserProvider';
+import { UserData, Logout} from '../providers/UserProvider';
+import { UserDataType } from '@/types/types';
 
 const Header:React.FC = () => {
     const userData = useContext<UserDataType|null>(UserData);

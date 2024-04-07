@@ -12,6 +12,7 @@ import Achievement from './components/Achievement';
 import Group from './components/Group'
 import BlogPage from './components/BlogPage';
 import BlogCreate from './components/BlogCreate';
+import MyPage from './components/MyPage';
 
 const Router:React.FC = () => {
     return (
@@ -30,6 +31,9 @@ const Router:React.FC = () => {
                     <Route path={'/about'} element={<About/>}/>
                     <Route path={'/achievement'} element={<Achievement/>}/>
                     <Route path={'/group'} element={<Group/>}/>
+
+                    <Route path={'/user/:userID'} element={<MyPage/>}/>
+
                     <Route path={'/*'} element={<Notfound/>}/>
                 </Routes>
             </div>

@@ -1,13 +1,9 @@
 import { ChangeEvent, MouseEvent, useEffect, useState } from 'react';
 import  Axios, { AxiosResponse }  from 'axios';
 import { base } from '../BaseURL';
+import { blogDataType } from '@/types/types';
 
-export type blogDataType = {
-    id:string,
-    title:string,
-    tags:string[],
-    text:string,
-}
+
 
 const Blogs:React.FC = () => {
     const [blogsData , setBlogsData] = useState<blogDataType[]|null>(null);
