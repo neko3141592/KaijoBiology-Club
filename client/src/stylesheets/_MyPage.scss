@@ -2,6 +2,7 @@
 @use './config/designs';
 
 .mypage {
+    @extend %page_main;
     .inner {
         width: 95%;
         margin: 120px auto;

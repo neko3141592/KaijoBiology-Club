@@ -29,7 +29,16 @@ const MyPage:React.FC = () => {
         <div className='mypage'>
             <div className='inner'>
                 <h1>{userID}</h1>
-                <h2>Email: {userData?.email}</h2>
+                {
+                    (!userData || Object.keys(userData).length === 0)?(
+                        <h2>User not found</h2>
+                    ):(
+                        <>
+                            <h2>Email: {userData?.email}</h2>
+                        </>
+                    )
+                }
+                
             </div>
         </div>
     );
